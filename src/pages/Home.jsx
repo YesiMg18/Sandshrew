@@ -18,11 +18,11 @@ import WhatsIcon from "../assets/images/icon-wa.png";
 import MenuIcon from "../assets/images/menu.png";
 import LanguageIcon from "../assets/images/icon-idioma.png";
 import Illustration from "../assets/images/ilustration.png";
-import ArrowIcon from "../assets/images/icon-arrow-down.png";
 import CalendarIcon from "../assets/images/icon-calendar.png";
 import ListIcon from "../assets/images/icon-list.png";
 import InfoIcon from "../assets/images/icon-info.png";
 import PercentIcon from "../assets/images/icon-percent.png";
+import CloseMenu from "../assets/images/close-menu.png";
 
 export default class Home extends Component {
   constructor(props) {
@@ -45,85 +45,117 @@ export default class Home extends Component {
     return (
       <>
         <header>
-          <nav>
-            <img className="logo" src={Logo} alt="Logo Volindo" />
-            <div className="buttonContainer">
-              <button>Log in</button>
-              <button>Contact us</button>
-              <button>
-                <img src={LanguageIcon} alt="Icon Language" />
-                EN
-                <select src={ArrowIcon} alt="" />
-              </button>
-            </div>
-            <div className="buttonMenu">
-              <button>
-                <img src={MenuIcon} alt="Menu Icon" />
-              </button>
-            </div>
-          </nav>
-          <div className="headerContainer">
-            <div className="titleHeader">
-              <h2>Make your travel</h2>
-              <h2>memoriable</h2>
-              <button>View More</button>
-            </div>
-            <div className="imageHeader">
-              <img src={Illustration} alt="Illustration Header" />
+          <div className="fixedContainer">
+            <nav>
+              <img className="logo" src={Logo} alt="Logo Volindo" />
+              <div className="buttonContainer">
+                <a>Log in</a>
+                <a href="#contactus">Contact us</a>
+                <a>
+                  <img src={LanguageIcon} alt="Icon Language" />
+                  <select name="lang" id="lang">
+                    <option value="es">ES</option>
+                    <option value="en">EN</option>
+                  </select>
+                </a>
+              </div>
+              <div className="buttonMenu">
+                <button onClick={e => this.showMenu()}>
+                  <img src={MenuIcon} alt="Menu Icon" />
+                </button>
+              </div>
+            </nav>
+            <div className="headerContainer">
+              <div className="titleHeader">
+                <h2>Make your travel</h2>
+                <h2>memoriable</h2>
+                <button>View More</button>
+              </div>
+              <div className="imageHeader">
+                <img src={Illustration} alt="Illustration Header" />
+              </div>
             </div>
           </div>
         </header>
+        <div id="menu" className="menuResponsive">
+          <button className="closeMenu" onClick={e => this.showMenu()}>
+            <img src={CloseMenu} alt="Close Icon" />
+          </button>
+          <ul>
+            <img className="logoMenu" src={Logo} alt="Logo Volindo" />
+
+            <li>
+              <button className="logIn">Log in</button>
+            </li>
+            <li>
+              <button className="contactUs">Contact us</button>
+            </li>
+            <li>
+              <button className="language">
+                <img src={LanguageIcon} alt="Icon Language" />
+                <select name="lang" id="lang">
+                  <option value="es">ES</option>
+                  <option value="en">EN</option>
+                </select>
+              </button>
+            </li>
+          </ul>
+        </div>
         <section className="aboutUs">
-          <div className="title">
-            <h2>Lorem Ipsum</h2>
+          <div className="fixedContainer">
+            <div className="title">
+              <h2>Lorem Ipsum</h2>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
+              tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
+              porttitor vel ipsum. Donec a risus et sapien varius faucibus.
+              Etiam sollicitudin ultrices mauris sit amet tempor. Maecenas at
+              elit nec odio maximus porta. Mauris at vulputate nisi, quis ornare
+              nisl. Maecenas molestie id ante eget lobortis.
+            </p>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
-            tincidunt ante. Morbi magna augue, blandit nec laoreet eu, porttitor
-            vel ipsum. Donec a risus et sapien varius faucibus. Etiam
-            sollicitudin ultrices mauris sit amet tempor. Maecenas at elit nec
-            odio maximus porta. Mauris at vulputate nisi, quis ornare nisl.
-            Maecenas molestie id ante eget lobortis.
-          </p>
         </section>
         <section className="features">
-          <div className="benefitsBoxes">
-            <article>
-              <img src={CalendarIcon} alt="Calendar Icon" />
-              <h4>Lorem ipsum</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
-                tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
-                porttitor vel ipsum.
-              </p>
-            </article>
-            <article>
-              <img src={ListIcon} alt="List Icon" />
-              <h4>Lorem ipsum</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
-                tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
-                porttitor vel ipsum.
-              </p>
-            </article>
-            <article>
-              <img src={PercentIcon} alt="Percent Icon" />
-              <h4>Lorem ipsum</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
-                tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
-                porttitor vel ipsum.
-              </p>
-            </article>
-            <article>
-              <img src={InfoIcon} alt="Info Icon" />
-              <h4>Lorem ipsum</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
-                tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
-                porttitor vel ipsum.
-              </p>
-            </article>
+          <div className="fixedContainer">
+            <div className="benefitsBoxes">
+              <article>
+                <img src={CalendarIcon} alt="Calendar Icon" />
+                <h4>Lorem ipsum</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  a tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
+                  porttitor vel ipsum.
+                </p>
+              </article>
+              <article>
+                <img src={ListIcon} alt="List Icon" />
+                <h4>Lorem ipsum</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  a tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
+                  porttitor vel ipsum.
+                </p>
+              </article>
+              <article>
+                <img src={PercentIcon} alt="Percent Icon" />
+                <h4>Lorem ipsum</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  a tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
+                  porttitor vel ipsum.
+                </p>
+              </article>
+              <article>
+                <img src={InfoIcon} alt="Info Icon" />
+                <h4>Lorem ipsum</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                  a tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
+                  porttitor vel ipsum.
+                </p>
+              </article>
+            </div>
           </div>
         </section>
         <section className="computers">
@@ -136,78 +168,87 @@ export default class Home extends Component {
             <img src={Venecia} alt="Venecia" />
           </div>
           <div className="slideDevices">
-            <div className="descriptionDevices">
-              <h2>Lorem Ipsum</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a
-                tincidunt ante. Morbi magna augue, blandit nec laoreet eu,
-                porttitor vel ipsum. Donec a risus et sapien varius faucibus.
-                Etiam sollicitudin ultrices mauris sit amet tempor.
-              </p>
-              <button>View More</button>
-            </div>
+            <div className="fixedContainer">
+              <div className="computerContainer">
+                <div className="descriptionDevices">
+                  <h2>Lorem Ipsum</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Duis a tincidunt ante. Morbi magna augue, blandit nec
+                    laoreet eu, porttitor vel ipsum. Donec a risus et sapien
+                    varius faucibus. Etiam sollicitudin ultrices mauris sit amet
+                    tempor.
+                  </p>
+                  <button>View More</button>
+                </div>
 
-            <div className="imageDevices">
-              <img src={DevicesImage} alt="Devices Image" />
+                <div className="imageDevices">
+                  <img src={DevicesImage} alt="Devices" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
         <section className="offers">
-          <div className="offersContainer">
-            <article className="promoBox">
-              <div>
-                <img src={PromoIcon} alt="Promo Icon" />
+          <div className="fixedContainer">
+            <div className="offersSection">
+              <div className="offersContainer">
+                <article className="promoBox">
+                  <div>
+                    <img src={PromoIcon} alt="Promo Icon" />
+                  </div>
+                  <div className="textPromo">
+                    <p>Offers and discounts</p> <p>in hotels and excursions</p>
+                    <button>SEE MORE</button>
+                  </div>
+                </article>
+                <article className="newsBox">
+                  <div>
+                    <img src={NewsIcon} alt="Promo Icon" />
+                  </div>
+                  <div className="textNews">
+                    <p>Kwon the weekly</p>
+                    <button>SUSCRIBE</button>
+                  </div>
+                </article>
               </div>
-              <div className="textPromo">
-                <p>Offers and discounts</p> <p>in hotels and excursions</p>
-                <button>SEE MORE</button>
+              <div className="listOffers">
+                <h2>Lorem Ipsum</h2>
+                <ul>
+                  <li>
+                    <img src={ListOffers} alt="List Offers" />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Duis a tincidunt ante.
+                    </p>
+                  </li>
+                  <li>
+                    <img src={ListOffers} alt="List Offers" />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Duis a tincidunt ante.
+                    </p>
+                  </li>
+                  <li>
+                    <img src={ListOffers} alt="List Offers" />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Duis a tincidunt ante.
+                    </p>
+                  </li>
+                  <li>
+                    <img src={ListOffers} alt="List Offers" />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Duis a tincidunt ante.
+                    </p>
+                  </li>
+                </ul>
               </div>
-            </article>
-            <article className="newsBox">
-              <div>
-                <img src={NewsIcon} alt="Promo Icon" />
-              </div>
-              <div className="textNews">
-                <p>Kwon the weekly</p>
-                <button>SUSCRIBE</button>
-              </div>
-            </article>
-          </div>
-          <div className="listOffers">
-            <h2>Lorem Ipsum</h2>
-            <ul>
-              <li>
-                <img src={ListOffers} alt="List Offers" />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  a tincidunt ante.
-                </p>
-              </li>
-              <li>
-                <img src={ListOffers} alt="List Offers" />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  a tincidunt ante.
-                </p>
-              </li>
-              <li>
-                <img src={ListOffers} alt="List Offers" />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  a tincidunt ante.
-                </p>
-              </li>
-              <li>
-                <img src={ListOffers} alt="List Offers" />
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  a tincidunt ante.
-                </p>
-              </li>
-            </ul>
+            </div>
           </div>
         </section>
-        <section className="contact">
+        <section name="contactus" id="contactus" className="contact">
           <div className="formContainer">
             <h2>ANY DOUBTS CONTACT US</h2>
             <form action="">
@@ -224,8 +265,8 @@ export default class Home extends Component {
                 <input type="text" />
               </article>
               <article className="checkbox">
-                <input type="checkbox" name="" id="" /> I accept the Privacy
-                Policy
+                <input type="radio" name="" id="" />
+                <p>I accept the Privacy Policy</p>
               </article>
               <span>
                 <button>SUBMIT</button>

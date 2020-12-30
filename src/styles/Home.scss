@@ -1,29 +1,32 @@
-@import "./Media.scss";
+@import "./Mixins.scss";
 
 header {
-  background-image: url("../assets/images/image-hero.png");
-  background-size: cover;
+  @include background("../assets/images/image-hero.png");
+  background-position: bottom;
+  padding-bottom: 100px;
 
   nav {
+    @include flex(space-between);
     position: relative;
-    display: flex;
-    justify-content: space-between;
     .logo {
-      margin: 40px 60px;
-      max-width: 120px;
+      max-width: 150px;
       @include media(md) {
         max-width: 150px;
       }
     }
     .buttonContainer {
+      @include flex(center);
+
       @include media(md) {
         display: none;
       }
-      button {
+      a {
         margin: 50px 14px;
         padding: 5px 30px;
         border-radius: 20px;
         color: white;
+        font-size: 1.4rem;
+        text-decoration: none;
 
         &:nth-of-type(1) {
           font-weight: 400;
@@ -35,7 +38,7 @@ header {
         }
         &:nth-of-type(3) {
           font-size: 1.8rem;
-
+          @include flex(center);
           img {
             background: none;
             width: 20px;
@@ -54,8 +57,7 @@ header {
       display: none;
       @include media(md) {
         display: block;
-        margin-top: 60px;
-        margin-right: 40px;
+        margin: 40px 0;
       }
     }
   }
@@ -67,7 +69,7 @@ header {
     }
 
     .titleHeader {
-      margin: 100px 60px;
+      margin: 100px 0;
       h2 {
         color: #fff;
         font-size: 5.2rem;
@@ -82,24 +84,88 @@ header {
       }
     }
     .imageHeader {
-      display: flex;
-      justify-content: center;
+      @include flex(center);
       img {
-        width: 70%;
+        width: 100%;
+        max-width: 700px;
       }
     }
   }
 }
 
+.menuResponsive {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--menu-color);
+  background-size: 100%;
+  z-index: 999;
+  text-align: center;
+
+  .closeMenu {
+    margin: 20px;
+    position: absolute;
+    top: 0;
+
+    right: 0;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  .logoMenu {
+    margin-top: 60px;
+    width: 180px;
+  }
+
+  li {
+    margin: 70px 0;
+    cursor: pointer;
+
+    .logIn {
+      background-color: #d9c67a;
+      color: white;
+      padding: 13px 60px;
+      border-radius: 20px;
+      letter-spacing: 2px;
+    }
+    .contactUs {
+      border: 1px solid #d9c67a;
+      color: white;
+      padding: 13px 35px;
+      border-radius: 20px;
+      letter-spacing: 2px;
+    }
+    .language {
+      img {
+        width: 25px;
+      }
+      select {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 13px;
+      }
+    }
+  }
+
+  @include media(md) {
+    display: none;
+    background-color: #0c2e49;
+  }
+}
+
 .aboutUs {
-  background-image: url("../assets/images/bg-image.png");
-  background-size: cover;
+  @include background("../assets/images/bg-image.png");
   background-position: top left 35%;
-  background-repeat: no-repeat;
 
   .title {
     text-align: center;
-    margin: 90px 0 30px;
+    margin: 100px 0 30px;
 
     h2 {
       font-size: 3.5rem;
@@ -117,11 +183,12 @@ header {
 }
 
 .features {
-  margin: 60px 30px;
+  margin: 60px 0;
 
   .benefitsBoxes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
     @include media(lg) {
       grid-template-columns: 1fr 1fr;
     }
@@ -130,7 +197,7 @@ header {
     }
 
     article {
-      margin: 0 40px;
+      margin: 0;
       text-align: center;
       background-color: #393c41;
       padding: 30px;
@@ -181,159 +248,160 @@ header {
     }
   }
   .slideDevices {
-    background-image: url("../assets/images/bg-section2.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include background("../assets/images/bg-section2.png");
     background-position-y: -5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    @include media(lg) {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
 
-    .descriptionDevices {
-      margin-top: 100px;
-      margin-left: 50px;
-      padding: 0 50px;
-      color: white;
+    .computerContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
       @include media(lg) {
-        margin: 100px auto;
+        grid-template-columns: 1fr;
+        text-align: center;
       }
+      .descriptionDevices {
+        margin: 100px 0;
 
-      h2 {
-        font-size: 3.4rem;
-        margin-bottom: 50px;
-      }
-
-      p {
-        font-size: 1.4rem;
-        margin-bottom: 50px;
-      }
-      button {
         color: white;
-        text-transform: uppercase;
-        font-weight: 400;
-        letter-spacing: 1px;
-        background-color: #e3cb7b;
-        border: none;
-        border-radius: 20px;
-        padding: 5px 35px;
-      }
-    }
-    .imageDevices {
-      @include media(lg) {
-        margin: 100px auto;
-      }
+        @include media(lg) {
+          margin: 100px auto;
+        }
 
-      img {
+        h2 {
+          font-size: 3.4rem;
+          margin-bottom: 50px;
+        }
+
+        p {
+          font-size: 1.4rem;
+          margin-bottom: 50px;
+        }
+        button {
+          color: white;
+          text-transform: uppercase;
+          font-weight: 400;
+          letter-spacing: 1px;
+          background-color: #e3cb7b;
+          border: none;
+          border-radius: 20px;
+          padding: 5px 35px;
+        }
+      }
+      .imageDevices {
+        margin: 100px 0;
         width: 100%;
-        max-width: 750px;
+
+        @include media(lg) {
+        }
+
+        img {
+          width: 100%;
+          max-width: 750px;
+        }
       }
     }
   }
 }
 
 .offers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 50px;
-  @include media(lg) {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+  .offersSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px;
+    margin: 50px 0;
 
-  .offersContainer {
-    text-align: center;
-    margin: 0 80px;
-
-    @include media(md) {
-      margin: 20px auto;
+    @include media(lg) {
+      grid-template-columns: 1fr;
+      text-align: center;
     }
+    .offersContainer {
+      text-align: center;
 
-    article {
-      margin: 30px auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      @include media(xs) {
+      @include media(md) {
         margin: 20px auto;
       }
-    }
 
-    .promoBox {
-      background-color: #f5ce67;
-      border-radius: 20px;
+      article {
+        margin: 30px auto;
+        @include flex(center);
 
-      img {
-        width: 80px;
-        margin: 30px;
+        @include media(xs) {
+          margin: 20px auto;
+        }
       }
 
-      p {
-        text-align: left;
-        font-size: 1.9rem;
-      }
-      button {
-        background-color: #2bbdc4;
-        color: white;
-        text-transform: uppercase;
-        font-weight: 400;
-        letter-spacing: 1px;
-        border: none;
-        border-radius: 20px;
-        padding: 5px 35px;
-        margin: 20px 0;
-      }
-      .textPromo {
-        text-align: left;
-      }
-    }
-    .newsBox {
-      background-color: #aadee1;
-      border-radius: 20px;
-
-      img {
-        width: 80px;
-        margin: 30px;
-      }
-      p {
-        font-size: 1.9rem;
-      }
-      button {
+      .promoBox {
         background-color: #f5ce67;
-        color: white;
-        text-transform: uppercase;
-        font-weight: 400;
-        letter-spacing: 1px;
-        border: none;
         border-radius: 20px;
-        padding: 5px 35px;
-        margin: 20px 0;
-      }
-      .textNews {
-        text-align: left;
-      }
-    }
-  }
-  .listOffers {
-    h2 {
-      font-size: 2.5rem;
-      margin: 0 20px;
-      color: #1b3e5f;
-    }
-    ul {
-      li {
-        display: flex;
-        justify-content: space-between;
-        list-style: none;
-        font-size: 1.4rem;
-        margin: 40px 20px;
 
         img {
-          width: 30px;
-          margin: 0 10px;
+          width: 80px;
+          margin: 30px;
+        }
+
+        p {
+          text-align: left;
+          font-size: 1.9rem;
+        }
+        button {
+          background-color: #2bbdc4;
+          color: white;
+          text-transform: uppercase;
+          font-weight: 400;
+          letter-spacing: 1px;
+          border: none;
+          border-radius: 20px;
+          padding: 5px 35px;
+          margin: 20px 0;
+        }
+        .textPromo {
+          text-align: left;
+        }
+      }
+      .newsBox {
+        background-color: #aadee1;
+        border-radius: 20px;
+
+        img {
+          width: 80px;
+          margin: 30px;
+        }
+        p {
+          font-size: 1.9rem;
+        }
+        button {
+          background-color: #f5ce67;
+          color: white;
+          text-transform: uppercase;
+          font-weight: 400;
+          letter-spacing: 1px;
+          border: none;
+          border-radius: 20px;
+          padding: 5px 35px;
+          margin: 20px 0;
+        }
+        .textNews {
+          text-align: left;
+        }
+      }
+    }
+    .listOffers {
+      h2 {
+        font-size: 2.5rem;
+        margin: 0 20px;
+        color: #1b3e5f;
+      }
+      ul {
+        li {
+          @include flex(space-between);
+          list-style: none;
+          font-size: 1.4rem;
+          margin: 40px 20px;
+
+          img {
+            width: 30px;
+            margin: 0 10px;
+          }
         }
       }
     }
@@ -341,9 +409,7 @@ header {
 }
 
 .contact {
-  background-image: url("../assets/images/bg-form.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  @include background("../assets/images/bg-form.png");
   display: grid;
   grid-template-columns: 1fr 1fr;
   @include media(lg) {
@@ -384,9 +450,6 @@ header {
           height: 35px;
           width: 100%;
         }
-        & s:nth-of-type(4) {
-          background-color: red;
-        }
       }
 
       button {
@@ -406,9 +469,8 @@ header {
 
 footer {
   background-color: #182e41;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(space-between);
+
   @include media(md) {
     flex-direction: column;
   }
@@ -421,7 +483,7 @@ footer {
     font-size: 1.4rem;
   }
   .logoFooter {
-    margin: 40px;
+    margin: 50px;
     img {
       width: 100%;
       max-width: 120px;

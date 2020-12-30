@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "../styles/Home.scss";
-import Carousel from "@brainhubeu/react-carousel";
-import "@brainhubeu/react-carousel/lib/style.css";
 import getBoot from "../common/boot";
 import Logo from "../assets/images/logo.png";
 import Beach from "../assets/images/img-place1.png";
